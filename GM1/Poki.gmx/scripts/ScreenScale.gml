@@ -18,4 +18,9 @@ with (Demo) {
     prevHeight  = _height;
 }
 
-show_debug_message("SCALED");
+
+with (Button) {
+    image_index = 0;
+}
+
+poki_canvas_update();

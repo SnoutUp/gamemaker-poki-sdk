@@ -3,7 +3,6 @@
 
 if(!callback_script("game_callback", 2)) exit;
 
-
 var type    = argument[0];
 var tag     = "";
 if (argument_count == 2) tag = argument[1];

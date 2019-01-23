@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>/// Demo Setup
 
+log[0]      = "Demo Created";
+
 application_surface_enable(false);
 application_surface_draw_enable(false);
 
@@ -63,7 +65,7 @@ poki_loading_finished();
             <string>/// Demo Variables
 
 
-log[0]      = "Demo Created";
+
 
 state       = "none";
 statePrev   = "none";
@@ -81,6 +83,35 @@ isBrowser   = os_browser != browser_not_a_browser;
 
 prevWidth   = 0;
 prevHeight  = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Create Corner Test Buttons
+
+with (instance_create(x, y, Button)) {
+    side = 1;
+}
+
+with (instance_create(x, y, Button)) {
+    side = -1;
+}
 </string>
           </argument>
         </arguments>
@@ -250,6 +281,11 @@ if (os_browser != browser_not_a_browser) {
         ScreenScale(window_get_width(), window_get_height());
     }
 }
+
+with (Button) {
+    y = view_yview + view_hview - 32;
+    x = view_xview + view_wview * 0.5 + side * (view_wview * 0.5 - 32);
+}
 </string>
           </argument>
         </arguments>
@@ -289,6 +325,11 @@ draw_set_valign(fa_top);
 draw_text_transformed(view_xview + 10, view_yview + 10, logString, 0.8, 0.8, 0);
 
 var controlString = "M - toggle music";
+if (musicOn) {
+    controlString += " (ON)";
+} else {
+    controlString += " (OFF)";
+}
 draw_set_halign(fa_right);
 draw_text_transformed(view_xview + view_wview - 10, view_yview + 10, controlString, 0.8, 0.8, 0);
 

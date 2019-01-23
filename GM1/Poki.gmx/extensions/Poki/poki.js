@@ -1,6 +1,7 @@
 /// Poki
 
 function poki_loading_finished() {
+	poki_log("loading finished");
 	sdk.gameLoadingFinished();
 }
 
@@ -40,6 +41,12 @@ function poki_rewarded_break(tag) {
 			}
 		}
 	);
+}
+
+function poki_canvas_update(){
+	if (typeof canvas_update === "function") { 
+		canvas_update_size();
+	}
 }
 
 /// this uses gmCallback extension to communicate with the game 

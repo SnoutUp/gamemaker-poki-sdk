@@ -108,6 +108,15 @@
           <argCount>-1</argCount>
           <args/>
         </function>
+        <function>
+          <name>poki_canvas_update</name>
+          <externalName>poki_canvas_update</externalName>
+          <kind>11</kind>
+          <help>poki_canvas_update();</help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
       </functions>
       <constants/>
     </file>
