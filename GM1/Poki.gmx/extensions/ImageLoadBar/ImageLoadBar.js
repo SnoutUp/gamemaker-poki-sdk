@@ -1,13 +1,15 @@
 function ImageLoadBar_hook(ctx, width, height, total, current, image) {
 	// change these to your liking:
-	var backgroundColor = "#e7846b";
-	var barBackgroundColor = "#f3c2b5";
-	var barForegroundColor = "#ffffff";
-	var barBorderColor = "#f3c2b5";
+	var backgroundColor 	= "#e7846b";
+	var barBackgroundColor 	= "#f3c2b5";
+	var barForegroundColor 	= "#ffffff";
+	var barBorderColor 		= "#f3c2b5";
+	
 	var barWidth = Math.round(width * 0.6);
 	var barHeight = 20;
 	var barBorderWidth = 2;
 	var barOffset = 10;
+	
 	// background:
 	ctx.fillStyle = backgroundColor;
 	ctx.fillRect(0, 0, width, height);
@@ -32,6 +34,12 @@ function ImageLoadBar_hook(ctx, width, height, total, current, image) {
 	ctx.fillStyle = barForegroundColor;
 	ctx.fillRect(barInnerLeft, barInnerTop, barLoadedWidth, barInnerHeight);
 
-	poki_loading(current/total * 0.75);
+	/*
+		Send a progress update to Poki,
+		adding a modifier to create a space for in-game loading if needed
+	*/
 	
+	if (typeof poki_loading === "function") { 
+		poki_loading(current/total * 0.75);
+	}	
 }

@@ -68,6 +68,7 @@
 		<script>
 		var sdk 		= PokiSDK; 
 		var pokiDebug 	= true;		// print Poki info to console or not
+		var gameCanvas	= document.getElementById("canvas");
 		
 		window.onload = function() {
 			sdk.init().then(() => {
@@ -95,9 +96,21 @@
 			sdk.gameLoadingProgress({percentageDone: percents});
 		}	
 		
-		
-		document.getElementById("canvas").width 	= window.innerWidth;
-		document.getElementById("canvas").height 	= window.innerHeight;
+		function canvas_update_size() {
+			var nw = window.innerWidth;
+			var nh = window.innerHeight;
+			
+			if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+				//IE 6+ in 'standards compliant mode'
+				nw = document.documentElement.clientWidth;
+				nh = document.documentElement.clientHeight;
+			}		
+			
+			gameCanvas.width 	= nw;
+			gameCanvas.height 	= nh;
+		}	
+
+		canvas_update_size();		
 		</script>
     </body>
 </html>
